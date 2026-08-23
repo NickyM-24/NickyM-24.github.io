@@ -45,22 +45,18 @@ function currentFile() {
   return path === "" ? "index.html" : path;
 }
 
-function buildList(items, current) {
-  const ul = document.createElement("ul");
-  ul.className = "nav-list";
+function flatten(items, depth, out) {
   items.forEach(item => {
-    const li = document.createElement("li");
-    const a = document.createElement("a");
-    a.href = item.href;
-    a.textContent = item.title;
-    if (item.href === current) a.classList.add("active");
-    li.appendChild(a);
-    if (item.children) {
-      li.appendChild(buildList(item.children, current));
-    }
-    ul.appendChild(li);
+    out.push({ title: item.title, href: item.href, depth: depth });
+    if (item.children) flatten(item.children, depth + 1, out);
   });
-  return ul;
+  return out;
+}
+
+function containsCurrent(item, current) {
+  if (item.href === current) return true;
+  if (!item.children) return false;
+  return item.children.some(c => containsCurrent(c, current));
 }
 
 function renderNav() {
@@ -68,12 +64,72 @@ function renderNav() {
   if (!mount) return;
   const current = currentFile();
 
-  const brand = document.createElement("div");
-  brand.className = "nav-brand";
-  brand.innerHTML = 'Nicky Dominique Malone<span>HCD Portfolio</span>';
-  mount.appendChild(brand);
+  const bar = document.createElement("div");
+  bar.className = "nav-bar";
 
-  mount.appendChild(buildList(NAV, current));
+  const brand = document.createElement("a");
+  brand.className = "nav-brand";
+  brand.href = "index.html";
+  brand.innerHTML = 'Nicky Dominique Malone<span>HCD Portfolio</span>';
+  bar.appendChild(brand);
+
+  const toggle = document.createElement("button");
+  toggle.className = "nav-toggle";
+  toggle.setAttribute("aria-label", "Toggle menu");
+  toggle.innerHTML = "&#9776;";
+  bar.appendChild(toggle);
+
+  const menu = document.createElement("ul");
+  menu.className = "nav-menu";
+
+  NAV.forEach(item => {
+    const li = document.createElement("li");
+    if (item.children) li.className = "has-children";
+
+    const a = document.createElement("a");
+    a.href = item.href;
+    a.textContent = item.title;
+    if (containsCurrent(item, current)) a.classList.add("active");
+    li.appendChild(a);
+
+    if (item.children) {
+      const caret = document.createElement("span");
+      caret.className = "caret";
+      caret.innerHTML = "&#9662;";
+      a.appendChild(caret);
+
+      const drop = document.createElement("ul");
+      drop.className = "dropdown";
+      flatten(item.children, 0, []).forEach(sub => {
+        const sli = document.createElement("li");
+        const sa = document.createElement("a");
+        sa.href = sub.href;
+        sa.textContent = sub.title;
+        sa.style.paddingLeft = (0.9 + sub.depth * 0.9) + "rem";
+        if (sub.href === current) sa.classList.add("active");
+        sli.appendChild(sa);
+        drop.appendChild(sli);
+      });
+      li.appendChild(drop);
+    }
+    menu.appendChild(li);
+  });
+
+  bar.appendChild(menu);
+  mount.appendChild(bar);
+
+  toggle.addEventListener("click", () => {
+    menu.classList.toggle("open");
+  });
+
+  menu.querySelectorAll(".has-children > a").forEach(link => {
+    link.addEventListener("click", e => {
+      if (window.innerWidth <= 820) {
+        e.preventDefault();
+        link.parentElement.classList.toggle("open");
+      }
+    });
+  });
 }
 
 function renderFooter() {
