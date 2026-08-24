@@ -7,11 +7,12 @@
 
 const NAV = [
   { title: "Home", href: "index.html" },
-  { title: "Portfolio", href: "profotilio.html", children: [
+  { title: "About Me", href: "profotilio.html", children: [
     { title: "Framing Your Design", href: "profotilio-framing-your-design.html" },
   ]},
   { title: "Internship", href: "internship.html", children: [
     { title: "Timesheet", href: "internship-timesheet.html" },
+    { title: "Timesheet #2", href: "internship-timesheet-2.html" },
     { title: "Treasure Hunt", href: "internship-treasure-hunt.html" },
     { title: "Brainstorm", href: "internship-brainstorm.html" },
   ]},
@@ -32,11 +33,35 @@ const NAV = [
     { title: "Recruitment Strategy", href: "inspiration-recruitment-strategy.html" },
     { title: "Survey and Interview Data", href: "inspiration-survey-and-interview-datadata.html" },
     { title: "Capture Your Learning", href: "inspiration-capture-your-learning.html" },
+  ]},
+  { title: "Ideation", href: "ideation.html", children: [
     { title: "Generating Ideas", href: "inspiration-generating-ideas.html" },
     { title: "Selecting an Idea", href: "inspiration-selecting-an-idea.html" },
     { title: "Rapid Prototype", href: "inspiration-rapid-prototype.html" },
     { title: "Gather Feedback", href: "inspiration-gather-feedback.html" },
     { title: "Integrate", href: "inspiration-integrate.html" },
+  ]},
+  { title: "Implementation", href: "implementation.html", children: [
+    { title: "Roadmap to Success", href: "implementation-roadmap-to-success.html" },
+    { title: "Funding Strategy", href: "implementation-funding-strategy.html" },
+    { title: "Monitor and Evaluate", href: "implementation-monitor-and-evaluate.html" },
+    { title: "Pilot", href: "implementation-pilot.html" },
+    { title: "Sustainable Revenue", href: "implementation-sustainable-revenue.html" },
+    { title: "Creating Partnerships", href: "implementation-creating-partnerships.html" },
+    { title: "Optimize and Adapt", href: "implementation-optimize-and-adapt.html" },
+    { title: "Exploring Scalability", href: "implementation-exploring-scalability.html" },
+  ]},
+  { title: "Project Conclusion", href: "project-conclusion.html", children: [
+    { title: "Project Summary", href: "project-conclusion-project-summary.html" },
+    { title: "Project Presentation", href: "project-conclusion-project-presentation.html" },
+  ]},
+  { title: "Program Outcomes", href: "program-outcomes.html", children: [
+    { title: "Program Overview", href: "program-outcomes-program-overview.html" },
+    { title: "Education in Society", href: "program-outcomes-education-in-society.html" },
+    { title: "Act of Learning", href: "program-outcomes-act-of-learning.html" },
+    { title: "Identity as an Educator", href: "program-outcomes-identity-as-an-educator.html" },
+    { title: "Communication and Collaboration", href: "program-outcomes-communication-and-collaboration.html" },
+    { title: "Leadership, Advocacy, and Innovation", href: "program-outcomes-leadership-advocacy-and-innovation.html" },
   ]},
 ];
 
