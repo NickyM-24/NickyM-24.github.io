@@ -12,7 +12,7 @@ const NAV = [
   ]},
   { title: "Internship", href: "internship.html", children: [
     { title: "Timesheet", href: "internship-timesheet.html" },
-    { title: "Timesheet #2", href: "internship-timesheet-2.html" },
+    { title: "Timesheet #2 (EDU 498)", href: "internship-timesheet-2.html" },
     { title: "Treasure Hunt", href: "internship-treasure-hunt.html" },
     { title: "Brainstorm", href: "internship-brainstorm.html" },
   ]},
