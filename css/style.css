@@ -524,3 +524,35 @@ table.data tfoot td {
   .week-grid { grid-template-columns: 1fr; }
   .week-box { border-right: none; min-height: 0; }
 }
+
+/* ---------- program outcomes: photo + domain definition ---------- */
+
+.photo {
+  margin: 1.5rem 0 2rem;
+}
+.photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  border: 3px solid var(--pink);
+  border-radius: var(--radius-lg);
+  box-shadow: 6px 6px 0 0 var(--pink-soft-line);
+}
+.photo figcaption {
+  font-size: 0.78rem;
+  color: var(--ink-soft);
+  margin-top: 0.6rem;
+}
+.photo figcaption a { font-weight: 500; }
+
+blockquote.definition {
+  margin: 1.5rem 0;
+  padding: 1.1rem 1.3rem;
+  background: var(--pink-soft);
+  border-left: 6px solid var(--pink);
+  border-radius: 0 var(--radius) var(--radius) 0;
+}
+blockquote.definition p:last-child { margin-bottom: 0; }
+.source-url.cite { word-break: normal; }
